@@ -1,21 +1,7 @@
 package org.geektimes.projects.user.service;
 
 import org.geektimes.projects.user.domain.User;
-<<<<<<< HEAD
-import org.geektimes.projects.user.repository.UserRepository;
 
-public class UserServiceImpl implements UserService {
-
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Override
-    public boolean register(User user) {
-        return userRepository.save(user);
-=======
 import org.geektimes.projects.user.sql.LocalTransactional;
 
 import javax.annotation.Resource;
@@ -68,8 +54,7 @@ public class UserServiceImpl implements UserService {
         // after process
         // transaction.commit();
 
-        return false;
->>>>>>> upstream/master
+        return true;
     }
 
     @Override
@@ -78,10 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-<<<<<<< HEAD
-=======
     @LocalTransactional
->>>>>>> upstream/master
     public boolean update(User user) {
         return false;
     }
@@ -93,10 +75,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User queryUserByNameAndPassword(String name, String password) {
-<<<<<<< HEAD
-        return userRepository.getByNameAndPassword(name,password);
-=======
         return null;
->>>>>>> upstream/master
     }
 }
