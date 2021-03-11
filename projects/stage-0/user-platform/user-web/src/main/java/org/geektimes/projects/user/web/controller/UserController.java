@@ -7,6 +7,8 @@ import org.geektimes.projects.user.service.UserServiceImpl;
 import org.geektimes.projects.user.sql.DBConnectionManager;
 import org.geektimes.web.mvc.controller.PageController;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.POST;
@@ -15,7 +17,8 @@ import javax.ws.rs.Path;
 @Path("/user")
 public class UserController implements PageController {
 
-    private UserService userService = new UserServiceImpl(new DatabaseUserRepository(new DBConnectionManager()));
+    @Resource(name = "bean/UserService")
+    private UserService userService;
 
     @POST
     @Path("/register")
@@ -27,7 +30,7 @@ public class UserController implements PageController {
         user.setName(email);
         user.setEmail(email);
         user.setPassword(password);
-        user.setPhoneNumber("135********");
+        user.setPhoneNumber("13527234118");
 
         if (userService.queryUserByNameAndPassword(email,password).isNotExisted()){
             if (userService.register(user)){
